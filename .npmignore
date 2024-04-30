@@ -1,22 +1,27 @@
 #ide
+/.vscode
 
 # dependencies
 /node_modules
-example/node_modules
 /.pnp
 .pnp.js
 
-# testing
-/coverage
+# production
+webpack*
+rollup*
+.babelrc.js
+
+#development
+/build
 /sandbox
 
-# production
-/build
-/lib
-/dist
-
-# demo
+#demo
+/example
+index.html
 /demo
+
+# testing
+/coverage
 
 # misc
 .DS_Store
