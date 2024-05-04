@@ -1,15 +1,16 @@
 /**
- *
+ * @class Api
  * @param {Object} options
  * @param {HTMLElement} options.containerElement - the first ancestor of the Tablist element which has a hidden overflow
  * @param {HTMLElement} options.buttonElement - should be next sibling element of the Tablist element
  * @param {String} [options.tabDisplay="flex"] - default value is "inline-flex". would be display of li tag
  * @param {String} [options.containerDisplay="flex"] - default value is "inline-flex". would be display of containerElement
  */
-const Api = function (deps, options = {}) {
-  this._setOptions(options);
+export const Api = function (options) {
+  const arg = arguments;
+  this._setOptions(arg[1]);
   this._tablistEl = null;
-  const {getElManagementIns} = deps();
+  const {getElManagementIns} = arg[0]();
   this._getElManagementIns = getElManagementIns;
   this._tabs = null;
   this._tabsCount = null;
@@ -164,4 +165,3 @@ Api.prototype = {
       : this._findFirstHiddenTabIndexDSCE(selectedTabInfo, start, stop);
   },
 };
-export default Api;
