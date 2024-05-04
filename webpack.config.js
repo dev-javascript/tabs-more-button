@@ -7,9 +7,9 @@ module.exports = (env) => {
       'more-tabs': './src/api.js',
     },
     output: {
-      filename: `[name].${isProduction ? '.min' : ''}.js`,
+      filename: `[name]${isProduction ? '.min' : ''}.js`,
       path: path.resolve(__dirname, 'build'),
-      library: pkg.name,
+      library: 'moreTabs',
       libraryTarget: 'umd',
       publicPath: '/build/',
       umdNamedDefine: true,
