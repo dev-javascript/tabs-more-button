@@ -2,7 +2,7 @@ import {terser} from 'rollup-plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 const pkg = require('./package.json');
-const Config = ({en, inputPath = '', outputFile = 'more-tabs', outputName = 'moreTabs', pf = false}) => {
+const Config = ({en, inputPath = '', outputFile = 'tabs-more-button', outputName = 'tabsMoreButton', pf = false}) => {
     var pfName = pf ? '.including-polyfills' : '';
     return {
       input: `lib/${pf ? 'esm-including-polyfills' : 'esm'}/${inputPath}api.js`,

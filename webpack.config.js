@@ -4,12 +4,12 @@ module.exports = (env) => {
   const isProduction = env === 'production';
   return {
     entry: {
-      'more-tabs': './src/api.js',
+      'tabs-more-button': './src/api.js',
     },
     output: {
       filename: `[name]${isProduction ? '.min' : ''}.js`,
       path: path.resolve(__dirname, 'build'),
-      library: 'moreTabs',
+      library: 'tabsMoreButton',
       libraryTarget: 'umd',
       publicPath: '/build/',
       umdNamedDefine: true,

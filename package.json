@@ -1,5 +1,5 @@
 {
-  "name": "more-tabs",
+  "name": "tabs-more-button",
   "version": "0.1.0",
   "private": false,
   "author": {
@@ -11,11 +11,11 @@
   "module": "lib/esm/api.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-javascript/more-tabs.git"
+    "url": "git+https://github.com/dev-javascript/tabs-more-button.git"
   },
-  "homepage": "https://dev-javascript.github.io/more-tabs/",
+  "homepage": "https://dev-javascript.github.io/tabs-more-button/",
   "bugs": {
-    "url": "https://github.com/dev-javascript/more-tabs/issues"
+    "url": "https://github.com/dev-javascript/tabs-more-button/issues"
   },
   "scripts": {
     "watch": "set NODE_OPTIONS=--openssl-legacy-provider & npm-run-all --parallel watch:*",
@@ -63,8 +63,7 @@
     "lib",
     "!*.test.js",
     "!*.test.js.snap",
-    "index.d.ts",
-    "index.ts"
+    "index.d.ts"
   ],
   "keywords": [
     "tabs",
@@ -78,6 +77,7 @@
   "directories": {
     "lib": "lib"
   },
+  "types": "./index.d.ts",
   "jest": {
     "setupFilesAfterEnv": [
       "jest-extended"

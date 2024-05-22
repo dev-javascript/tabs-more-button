@@ -2,7 +2,7 @@
 
 ## Semantic Versioning
 
-`more-tabs` follows semantic versioning. We release patch versions for critical bugfixes, minor versions for new features or non-essential changes, and major versions for any breaking changes.
+`tabs-more-button` follows semantic versioning. We release patch versions for critical bugfixes, minor versions for new features or non-essential changes, and major versions for any breaking changes.
 
 ## Proposing a Change
 
