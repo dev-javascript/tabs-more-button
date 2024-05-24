@@ -1,3 +1,5 @@
+[![Test coverage](https://codecov.io/gh/dev-javascript/tabs-more-button/graph/badge.svg?token=GT1LU074L2)](https://codecov.io/gh/dev-javascript/tabs-more-button) [![NPM version](http://img.shields.io/npm/v/tabs-more-button.svg?style=flat-square)](http://npmjs.org/package/tabs-more-button) [![License](http://img.shields.io/npm/l/tabs-more-button.svg?style=flat-square)](LICENSE) [![npm download](https://img.shields.io/npm/dm/tabs-more-button.svg?style=flat-square)](https://npmjs.org/package/tabs-more-button) [![Build Status](https://travis-ci.org/ly-components/tabs-more-button.png)](https://travis-ci.org/ly-components/tabs-more-button)
+
 # tabs-more-button
 
 Responsive Tabs with more button
@@ -22,24 +24,31 @@ If you need to directly include script in your html, use the following links :
 <script src="https://unpkg.com/tabs-more-button@latest/dist/tabs-more-button.min.js"></script>
 ```
 
-## Usage
+## Minimal Usage
+
+css :
+
+```css
+ul,
+li {
+  display: inline-flex;
+}
+```
 
 html :
 
-```js
+```html
 <div id="container" style="display:flex;">
-  <ul style="display:inline-flex;">
-    <li style="display:inline-flex;">Tab 0</li>
-    <li style="display:inline-flex;">Tab 1</li>
-    <li style="display:inline-flex;">Tab 2</li>
-    <li style="display:inline-flex;">Tab 3</li>
-    <li style="display:inline-flex;color:red;">Active Tab 4</li>
-    <li style="display:inline-flex;">Tab 5</li>
-    <li style="display:inline-flex;">Tab 6</li>
+  <ul>
+    <li>Tab 0</li>
+    <li>Tab 1</li>
+    <li>Tab 2</li>
+    <li>Tab 3</li>
+    <li style="color:red;">Active Tab 4</li>
+    <li>Tab 5</li>
+    <li>Tab 6</li>
   </ul>
-  <button id="more-button" style="display:inline-flex;">
-    more
-  </button>
+  <button id="more-button" style="display:inline-flex;">more</button>
 </div>
 ```
 
@@ -92,17 +101,27 @@ document.getElementById('more-button').addEventListener('click', () => console.t
   - type : `function`
   - description : makes tabs responsive by hiding `overflow tabs` except `active tab`
   - arguments :
-    1. selectedTabIndex :
-       - type : `Number`
-       - description : index of active tab element in the tablist element
-    2. direction? :
-       - type : `"ltr" | "rtl"`
-       - description : direction value of `tablist` element
-       - default value : `"ltr"`
-    3. isVertical? :
-       - type : `Boolean`
-       - description : `true` means `tablist` element is vertical
-       - default value : `false`
+    - selectedTabIndex :
+      - type : `Number`
+      - description : index of active tab element in the tablist element
+    - direction? :
+      - type : `"ltr" | "rtl"`
+      - description : direction value of `tablist` element
+      - default value : `"ltr"`
+    - isVertical? :
+      - type : `Boolean`
+      - description : `true` means `tablist` element is vertical
+      - default value : `false`
   - return :
     - type : `Array<{ el: HTMLElement, index: Number }>`
     - description : array of hidden tabs data
+
+## Test
+
+```js
+$ npm run test
+```
+
+## License
+
+MIT
