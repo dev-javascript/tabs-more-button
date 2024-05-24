@@ -3,8 +3,8 @@
  * @param {Object} options
  * @param {HTMLElement} options.containerElement - the first ancestor of the Tablist element which has a hidden overflow
  * @param {HTMLElement} options.buttonElement - should be next sibling element of the Tablist element
- * @param {String} [options.tabDisplay="flex"] - default value is "inline-flex". would be display of li tag
- * @param {String} [options.containerDisplay="flex"] - default value is "inline-flex". would be display of containerElement
+ * @param {String} [options.tabDisplay="inline-flex"] - default value is "inline-flex". would be display of li tag
+ * @param {String} [options.containerDisplay="flex"] - default value is "flex". would be display of containerElement
  */
 export const Api = function (options) {
   const arg = arguments;
@@ -20,7 +20,7 @@ Api.prototype = {
   _setOptions: function (options) {
     this._options = Object.assign(
       {},
-      {containerDisplay: 'flex', tabDisplay: 'flex', buttonElement: null, containerElement: null},
+      {containerDisplay: 'flex', tabDisplay: 'inline-flex', buttonElement: null, containerElement: null},
       options,
     );
   },
@@ -28,6 +28,7 @@ Api.prototype = {
     this._tablistEl = this._options.buttonElement.previousElementSibling;
     this._tablistEl.style.overflow = 'visible';
     this._options.containerElement.style.overflow = 'hidden';
+    this._options.containerElement.style.whiteSpace = 'nowrap';
     return this;
   },
   _showBtn: function () {
