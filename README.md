@@ -6,6 +6,16 @@ Responsive Tabs with more button
 
 Making tabs responsive by hiding overflow tabs except active tab
 
+## Features
+
+- `Vertical` support
+
+- `rtl` support
+
+- Flexible style
+
+- High performance
+
 ## Installation
 
 ```js
@@ -38,8 +48,8 @@ li {
 html :
 
 ```html
-<div id="container" style="display:flex;">
-  <ul>
+<div id="container">
+  <ul id="tablist" style="display:flex;">
     <li>Tab 0</li>
     <li>Tab 1</li>
     <li>Tab 2</li>
@@ -48,7 +58,7 @@ html :
     <li>Tab 5</li>
     <li>Tab 6</li>
   </ul>
-  <button id="more-button" style="display:inline-flex;">more</button>
+  <button id="view-more-button">more</button>
 </div>
 ```
 
@@ -58,8 +68,9 @@ js :
 import tabsMoreButton from 'tabs-more-button';
 
 const options = {
-  buttonElement: document.getElementById('more-button'),
+  buttonElement: document.getElementById('view-more-button'),
   containerElement: document.getElementById('container'),
+  tablistElement: document.getElementById('tablist'),
 };
 const instance = new tabsMoreButton(options);
 
@@ -67,20 +78,33 @@ let hiddenTabs = instance.resize(4 /*selectedTabIndex*/);
 addEventListener('resize', () => {
   hiddenTabs = instance.resize(4 /*selectedTabIndex*/);
 });
-document.getElementById('more-button').addEventListener('click', () => console.table(hiddenTabs));
+document.getElementById('view-more-button').addEventListener('click', () => console.table(hiddenTabs));
 ```
+
+## Rules
+
+- `view more` button should be sibling element of `Tablist` element
+
+- `tabs` and `view more` button should be kept on same line
+
+- Should not be any gap between `view more` button and `Tablist`
 
 ## options
 
 - buttonElement
 
   - type : `HtmlELement`
-  - description : `view more` button (should be next sibling element of `Tablist` element)
+  - description : `view more` button (should be sibling element of `Tablist` element)
 
 - containerElement
 
   - type : `HtmlELement`
-  - description : the first ancestor of `buttonElement` which its `width|height` is not relative to `tab list` element but is relative to `viewport`
+  - description : the first ancestor of `view more` button which its `width|height` is not relative to `Tablist` element but is relative to `viewport`
+
+- tablistElement
+
+  - type : `HtmlELement`
+  - description : the `Tablist` element
 
 - tabDisplay?
 
