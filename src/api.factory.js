@@ -20,12 +20,18 @@ Api.prototype = {
   _setOptions: function (options) {
     this._options = Object.assign(
       {},
-      {containerDisplay: 'flex', tabDisplay: 'inline-flex', buttonElement: null, containerElement: null},
+      {
+        containerDisplay: 'flex',
+        tabDisplay: 'inline-flex',
+        buttonElement: null,
+        containerElement: null,
+        tablistElement: null,
+      },
       options,
     );
   },
   _setEls: function () {
-    this._tablistEl = this._options.buttonElement.previousElementSibling;
+    this._tablistEl = this._options.tablistElement;
     this._tablistEl.style.overflow = 'visible';
     this._options.containerElement.style.overflow = 'hidden';
     this._options.containerElement.style.whiteSpace = 'nowrap';
