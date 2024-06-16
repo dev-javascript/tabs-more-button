@@ -1,10 +1,11 @@
 /**
  * @class Api
  * @param {Object} options
- * @param {HTMLElement} options.containerElement - the first ancestor of the Tablist element which has a hidden overflow
- * @param {HTMLElement} options.buttonElement - should be next sibling element of the Tablist element
- * @param {String} [options.tabDisplay="inline-flex"] - default value is "inline-flex". would be display of li tag
- * @param {String} [options.containerDisplay="flex"] - default value is "flex". would be display of containerElement
+ * @param {HTMLElement} options.containerElement - the first ancestor of the Tablist element which its width|height is not relative to tabList element but is relative to viewport
+ * @param {HTMLElement} options.buttonElement - should be sibling element of Tablist element
+ * @param {HTMLElement} options.tablistElement
+ * @param {String} [options.tabDisplay="inline-flex"] - default value is "inline-flex". would be display of tab elements
+ * @param {String} [options.containerDisplay="flex"] - default value is "flex". would be display of container element
  */
 export const Api = function (options) {
   const arg = arguments;
