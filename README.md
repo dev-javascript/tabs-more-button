@@ -1,6 +1,6 @@
-[![Test coverage](https://codecov.io/gh/dev-javascript/tabs-more-button/graph/badge.svg?token=GT1LU074L2)](https://codecov.io/gh/dev-javascript/tabs-more-button) [![NPM version](http://img.shields.io/npm/v/tabs-more-button.svg?style=flat-square)](http://npmjs.org/package/tabs-more-button) [![License](http://img.shields.io/npm/l/tabs-more-button.svg?style=flat-square)](LICENSE) [![npm download](https://img.shields.io/npm/dm/tabs-more-button.svg?style=flat-square)](https://npmjs.org/package/tabs-more-button) [![Build Status](https://travis-ci.org/ly-components/tabs-more-button.png)](https://travis-ci.org/ly-components/tabs-more-button)
-
 # tabs-more-button
+
+[![Test coverage](https://codecov.io/gh/dev-javascript/tabs-more-button/graph/badge.svg?token=GT1LU074L2)](https://codecov.io/gh/dev-javascript/tabs-more-button) [![NPM version](http://img.shields.io/npm/v/tabs-more-button.svg?style=flat-square)](http://npmjs.org/package/tabs-more-button) [![License](http://img.shields.io/npm/l/tabs-more-button.svg?style=flat-square)](LICENSE) [![npm download](https://img.shields.io/npm/dm/tabs-more-button.svg?style=flat-square)](https://npmjs.org/package/tabs-more-button) [![Build Status](https://travis-ci.org/ly-components/tabs-more-button.png)](https://travis-ci.org/ly-components/tabs-more-button)
 
 Responsive Tabs with more button
 
@@ -18,15 +18,11 @@ Making tabs responsive by hiding overflow tabs except active tab
 
 ## Installation
 
-```js
-$ npm install tabs-more-button --save
-```
+> $ npm install tabs-more-button --save
 
 or
 
-```js
-$ yarn add tabs-more-button
-```
+> $ yarn add tabs-more-button
 
 If you need to directly include script in your html, use the following links :
 
@@ -142,9 +138,7 @@ document.getElementById('view-more-button').addEventListener('click', () => cons
 
 ## Test
 
-```js
-$ npm run test
-```
+> $ npm run test
 
 ## License
 
