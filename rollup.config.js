@@ -39,5 +39,5 @@ const Config = ({en, inputPath = '', outputFile = 'tabs-more-button', outputName
       },
     };
   },
-  ConfigFactory = (op) => [Config({en: 'dev', ...op}), Config({en: 'prod', ...op})];
+  ConfigFactory = (op) => [Config({en: 'prod', ...op})];
 export default ConfigFactory();
