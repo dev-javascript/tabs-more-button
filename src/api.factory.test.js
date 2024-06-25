@@ -1,7 +1,7 @@
 import ElManagement from './distanceFromFactory.js';
 import {Api} from './api.factory.js';
 let container = document.createElement('div');
-let getElManagementIns, ins, buttonElement, containerElement;
+let getElManagementIns, ins, buttonElement, containerElement, tablistElement;
 beforeAll(() => {
   const d = document;
   document.body.appendChild(container);
@@ -23,11 +23,18 @@ beforeAll(() => {
   </div>
 </div>
   `;
-  (buttonElement = d.getElementById('more-button')), (containerElement = d.getElementById('container'));
+  (buttonElement = d.getElementById('more-button')),
+    (containerElement = d.getElementById('container')),
+    (tablistElement = d.getElementById('ul'));
 });
 beforeEach(() => {
   getElManagementIns = (params) => new ElManagement(params);
-  ins = new Api(() => ({getElManagementIns}), {buttonElement, containerElement, containerDisplay: 'block'});
+  ins = new Api(() => ({getElManagementIns}), {
+    buttonElement,
+    containerElement,
+    tablistElement,
+    containerDisplay: 'block',
+  });
 });
 afterEach(() => {
   ins = null;
@@ -36,12 +43,13 @@ afterEach(() => {
 afterAll(() => {
   buttonElement = null;
   containerElement = null;
+  tablistElement = null;
   container.innerHTML = '';
   document.body.removeChild(container);
   container = null;
 });
 describe('_setEls method : ', () => {
-  test('it should set _tablistEl and make its overflow, visible', () => {
+  test('it should set _tablistEl from options and make its overflow, visible', () => {
     ins._options = {
       buttonElement: {
         previousElementSibling: {
@@ -51,9 +59,12 @@ describe('_setEls method : ', () => {
       containerElement: {
         style: {overflow: 'unset'},
       },
+      tablistElement: {
+        style: {overflow: 'unset'},
+      },
     };
     ins._setEls();
-    expect(ins._tablistEl).toEqual(ins._options.buttonElement.previousElementSibling);
+    expect(ins._tablistEl).toEqual(ins._options.tablistElement);
     expect(ins._tablistEl.style.overflow).toBe('visible');
   });
   test('it should set overflow of containerElement element, hidden', () => {
@@ -64,6 +75,9 @@ describe('_setEls method : ', () => {
         },
       },
       containerElement: {
+        style: {overflow: 'unset'},
+      },
+      tablistElement: {
         style: {overflow: 'unset'},
       },
     };
@@ -288,6 +302,34 @@ describe('findFirstHiddenTabIndexFactory mehtod : ', () => {
     ins._getTabDis = () => 1;
     expect(ins._findFirstHiddenTabIndexDSCE({}, 0, 10)).toBe(6);
   });
+  test('findFirstHiddenTabIndexDSCE should loop through the tabs from the end and return the last tab index which its distance is negative', () => {
+    ins._tablistEl = tablistElement;
+    ins._validateTabsCount();
+    const selectedTabInfo = {index: 5, overflowFullSize: 6};
+    const tabsArray = [...ins._tabs];
+    ins._getTabDis = (selectedTabInfo, tabEl) => {
+      const tabIndex = tabsArray.indexOf(tabEl);
+      if (selectedTabInfo.index == tabIndex || selectedTabInfo.overflowFullSize == tabIndex) {
+        return {value: -1};
+      }
+      return {value: 1};
+    };
+    expect(ins._findFirstHiddenTabIndexDSCE(selectedTabInfo, 0, 6)).toBe(5);
+  });
+  test('_findFirstHiddenTabIndexASC should loop through the tabs and return the first tab index which its distance is negative', () => {
+    ins._tablistEl = tablistElement;
+    ins._validateTabsCount();
+    const selectedTabInfo = {index: 4, overflowFullSize: 3};
+    const tabsArray = [...ins._tabs];
+    ins._getTabDis = (selectedTabInfo, tabEl) => {
+      const tabIndex = tabsArray.indexOf(tabEl);
+      if (selectedTabInfo.index == tabIndex || selectedTabInfo.overflowFullSize == tabIndex) {
+        return {value: -1};
+      }
+      return {value: 1};
+    };
+    expect(ins._findFirstHiddenTabIndexASC(selectedTabInfo, 0, 6)).toBe(3);
+  });
 });
 describe('getOrder method : ', () => {
   test('it should return asc if : last tab child distance from end-edge of tablist container would greater then tablist container size', () => {
@@ -338,5 +380,25 @@ describe('hideBtn method : ', () => {
     expect(ins._options.buttonElement.style.opacity).toBe(0);
     expect(ins._options.buttonElement.style.position).toBe('absolute');
     expect(ins._options.buttonElement.style.pointerEvents).toBe('none');
+  });
+});
+describe('showBtn method : ', () => {
+  test(`it should update style of show more button`, () => {
+    ins._options.buttonElement = {
+      style: {},
+    };
+    ins._showBtn();
+    expect(ins._options.buttonElement.style.opacity).toBe(1);
+    expect(ins._options.buttonElement.style.position).toBe('relative');
+    expect(ins._options.buttonElement.style.pointerEvents).toBe('all');
+  });
+});
+describe('_checkOverflow method : ', () => {
+  test('_checkOverflow should check distance of last tab', () => {
+    ins.els = {
+      getDistance: (lastTab) => ({value: lastTab}),
+    };
+    expect(ins._checkOverflow(1)).toBe(false);
+    expect(ins._checkOverflow(-1)).toBe(true);
   });
 });
