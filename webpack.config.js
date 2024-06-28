@@ -38,7 +38,7 @@ module.exports = (env) => {
       umdNamedDefine: true,
     },
     devtool: 'source-map',
-    mode: env,
+    mode: 'development',
     module: {
       rules: [
         watch

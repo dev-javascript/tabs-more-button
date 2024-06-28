@@ -1,6 +1,6 @@
-import {terser} from 'rollup-plugin-terser';
-import commonjs from '@rollup/plugin-commonjs';
-import nodeResolve from '@rollup/plugin-node-resolve';
+const terser=require('@rollup/plugin-terser');
+const commonjs=require('@rollup/plugin-commonjs');
+const nodeResolve=require('@rollup/plugin-node-resolve');
 const pkg = require('./package.json');
 const Config = ({en, inputPath = '', outputFile = 'tabs-more-button', outputName = 'tabsMoreButton', pf = false}) => {
     var pfName = pf ? '.including-polyfills' : '';
@@ -40,4 +40,4 @@ const Config = ({en, inputPath = '', outputFile = 'tabs-more-button', outputName
     };
   },
   ConfigFactory = (op) => [Config({en: 'prod', ...op})];
-export default ConfigFactory();
+  module.exports = ConfigFactory();
