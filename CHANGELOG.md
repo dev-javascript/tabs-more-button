@@ -1,3 +1,7 @@
+# version 1.0.1
+
+fix `typing` issue
+
 # version 1.0.0
 
 - Adding `tablistElement` option
