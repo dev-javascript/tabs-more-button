@@ -32,20 +32,11 @@ If you need to directly include script in your html, use the following links :
 
 ## Minimal Usage
 
-css :
-
-```css
-ul,
-li {
-  display: inline-flex;
-}
-```
-
 html :
 
 ```html
 <div id="container">
-  <ul id="tablist" style="display:flex;">
+  <ul id="tablist" style="display:inline-flex;">
     <li>Tab 0</li>
     <li>Tab 1</li>
     <li>Tab 2</li>
