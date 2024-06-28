@@ -1,5 +1,5 @@
-import ElManagement from './distanceFromFactory.js';
-import {Api} from './api.factory.js';
+import ElManagement from '../src/distanceFromFactory.js';
+import {Api} from '../src/api.factory.js';
 let container = document.createElement('div');
 let getElManagementIns, ins, buttonElement, containerElement, tablistElement;
 beforeAll(() => {

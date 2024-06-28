@@ -12,7 +12,6 @@ rollup*
 .babelrc.js
 
 #development
-/build
 /sandbox
 
 #demo
