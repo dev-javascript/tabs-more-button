@@ -1,6 +1,8 @@
 export default function El({el, sizeDimension, sizeDirections}) {
   this._el = el;
+  /**would be width|height */
   this._sizeDimension = sizeDimension;
+  /**would be "rtl"|"ltr" */
   this._sizeDirections = sizeDirections;
 }
 El.prototype = {
@@ -10,6 +12,7 @@ El.prototype = {
   getPos: function () {
     return (this._pos = this._pos || this._el.getBoundingClientRect());
   },
+  /**not include padding and borders */
   getSize: function () {
     return (this.size =
       this.size ||
@@ -24,6 +27,7 @@ El.prototype = {
         );
       })(this));
   },
+  /**include margin */
   getFullSize: function () {
     return (this.fullSize =
       this.fullSize ||

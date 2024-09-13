@@ -122,14 +122,14 @@ Api.prototype = {
       : this._hideTabs(0, selectedTabInfo, true);
   },
   _validateSliderMinSize: function (selectedTabInfo) {
-    //the slider's size should greater than size of selected tab + more button
+    //available and visiable space in the tablist element should be greater than size of selected tab + more button
     return selectedTabInfo.overflowFullSize + this.els.getEl(this._options.buttonElement).getFullSize() >=
-      this.els.getEl(this._options.containerElement).getSize()
+      this.els.getVisibleSize(this._options.tablistElement).value
       ? false
       : true;
   },
   _getOrder: function (lastTab) {
-    return Math.abs(this.els.getDistance(lastTab).value) > this.els.getEl(this._options.containerElement).getSize()
+    return Math.abs(this.els.getDistance(lastTab).value) > this.els.getVisibleSize(this._options.tablistElement).value
       ? 'asc'
       : 'desc';
   },

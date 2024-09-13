@@ -336,7 +336,7 @@ describe('getOrder method : ', () => {
     ins._validateTabsCount();
     ins.els = {
       getDistance: () => ({value: 100}),
-      getEl: () => ({getSize: () => 99}),
+      getVisibleSize: () => ({value: 99}),
     };
     expect(ins._getOrder()).toBe('asc');
   });
@@ -344,7 +344,7 @@ describe('getOrder method : ', () => {
     ins._validateTabsCount();
     ins.els = {
       getDistance: () => ({value: 100}),
-      getEl: () => ({getSize: () => 101}),
+      getVisibleSize: () => ({value: 101}),
     };
     expect(ins._getOrder()).toBe('desc');
   });
