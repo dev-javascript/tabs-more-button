@@ -1,8 +1,8 @@
-export default function El({el, sizeDimension, sizeDirections}) {
+export default function El({ el, sizeDimension, sizeDirections }) {
   this._el = el;
   /**would be width|height */
   this._sizeDimension = sizeDimension;
-  /**would be "rtl"|"ltr" */
+  /**would be "right"|"left"|"top"|"bottom" */
   this._sizeDirections = sizeDirections;
 }
 El.prototype = {
@@ -11,6 +11,17 @@ El.prototype = {
   },
   getPos: function () {
     return (this._pos = this._pos || this._el.getBoundingClientRect());
+  },
+  /**
+   * including padding, border and margin
+   * @param {"Right"|"Bottom"|"Left"|"Top"} dir 
+   * @returns {Number}
+   */
+  getSpacing: function (dir) {
+    const style = this.getStyle();
+    return (
+      parseFloat(style[`margin${dir}`]) + parseFloat(style[`padding${dir}`]) + parseFloat(style[`border${dir}Width`])
+    );
   },
   /**not include padding and borders */
   getSize: function () {

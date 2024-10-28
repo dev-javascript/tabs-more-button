@@ -17,7 +17,11 @@ Els.prototype = {
     this.els.has(el) ||
       this.els.set(
         el,
-        this._geElInstance({el, sizeDimension: this._sizeDimension, sizeDirections: this._sizeDirections}),
+        this._geElInstance({
+          el,
+          sizeDimension: this._sizeDimension,
+          sizeDirections: this._sizeDirections,
+        }),
       );
     return this.els.get(el);
   },
