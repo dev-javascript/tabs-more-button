@@ -1,5 +1,5 @@
 import ElManagement from '../src/distanceFromFactory.js';
-import {Api} from '../src/api.factory.js';
+import { Api } from '../src/api.factory.js';
 let container = document.createElement('div');
 let getElManagementIns, ins, buttonElement, containerElement, tablistElement;
 beforeAll(() => {
@@ -29,7 +29,7 @@ beforeAll(() => {
 });
 beforeEach(() => {
   getElManagementIns = (params) => new ElManagement(params);
-  ins = new Api(() => ({getElManagementIns}), {
+  ins = new Api(() => ({ getElManagementIns }), {
     buttonElement,
     containerElement,
     tablistElement,
@@ -53,14 +53,14 @@ describe('_setEls method : ', () => {
     ins._options = {
       buttonElement: {
         previousElementSibling: {
-          style: {overflow: 'unset'},
+          style: { overflow: 'unset' },
         },
       },
       containerElement: {
-        style: {overflow: 'unset'},
+        style: { overflow: 'unset' },
       },
       tablistElement: {
-        style: {overflow: 'unset'},
+        style: { overflow: 'unset' },
       },
     };
     ins._setEls();
@@ -71,14 +71,14 @@ describe('_setEls method : ', () => {
     ins._options = {
       buttonElement: {
         previousElementSibling: {
-          style: {overflow: 'unset'},
+          style: { overflow: 'unset' },
         },
       },
       containerElement: {
-        style: {overflow: 'unset'},
+        style: { overflow: 'unset' },
       },
       tablistElement: {
-        style: {overflow: 'unset'},
+        style: { overflow: 'unset' },
       },
     };
     ins._setEls();
@@ -87,7 +87,7 @@ describe('_setEls method : ', () => {
 });
 describe('resize method : ', () => {
   test('it should call showAll method at frist if validateTabsCount method returns true, regardless of return value from checkOverflow method', () => {
-    ins._showAll = jest.fn(() => {});
+    ins._showAll = jest.fn(() => { });
     ins._validateTabsCount = jest.fn(() => {
       ins._tabs = ins._tablistEl.children;
       ins._tabsCount = ins._tabs.length;
@@ -98,7 +98,7 @@ describe('resize method : ', () => {
     expect(ins._validateTabsCount.mock.calls.length).toBe(1);
     expect(ins._showAll.mock.calls.length).toBe(1);
 
-    ins._showAll = jest.fn(() => {});
+    ins._showAll = jest.fn(() => { });
     ins._validateTabsCount = jest.fn(() => {
       ins._tabs = ins._tablistEl.children;
       ins._tabsCount = ins._tabs.length;
@@ -155,9 +155,9 @@ describe('resize method : ', () => {
 describe('hideTabs method : ', () => {
   test('it should hide tabs from firstHiddenTabIndex', () => {
     ins._validateTabsCount();
-    const selectedTabInfo = {index: 4};
-    ins._options.containerElement = {style: {display: ''}};
-    ins._showBtn = () => {};
+    const selectedTabInfo = { index: 4 };
+    ins._options.containerElement = { style: { display: '' } };
+    ins._showBtn = () => { };
     ins._hideTabs(5, selectedTabInfo);
     expect(ins._tabs[0].style.display === 'none').toBe(false);
     expect(ins._tabs[1].style.display === 'none').toBe(false);
@@ -169,9 +169,9 @@ describe('hideTabs method : ', () => {
   });
   test('it should return the array of objects including el and index properties', () => {
     ins._validateTabsCount();
-    const selectedTabInfo = {index: 4};
-    ins._options.containerElement = {style: {display: ''}};
-    ins._showBtn = () => {};
+    const selectedTabInfo = { index: 4 };
+    ins._options.containerElement = { style: { display: '' } };
+    ins._showBtn = () => { };
     const result = ins._hideTabs(5, selectedTabInfo);
     expect(result.length).toBe(2);
     expect(result[0].el).toEqual(ins._tabs[5]);
@@ -181,9 +181,9 @@ describe('hideTabs method : ', () => {
   });
   test('it should not consider selected tab if third parameter is not true', () => {
     ins._validateTabsCount();
-    const selectedTabInfo = {index: 4};
-    ins._options.containerElement = {style: {display: ''}};
-    ins._showBtn = () => {};
+    const selectedTabInfo = { index: 4 };
+    ins._options.containerElement = { style: { display: '' } };
+    ins._showBtn = () => { };
     const result = ins._hideTabs(3, selectedTabInfo);
     expect(ins._tabs[0].style.display === 'none').toBe(false);
     expect(ins._tabs[1].style.display === 'none').toBe(false);
@@ -202,9 +202,9 @@ describe('hideTabs method : ', () => {
   });
   test('it should consider selected tab if third parameter is true', () => {
     ins._validateTabsCount();
-    const selectedTabInfo = {index: 4};
-    ins._options.containerElement = {style: {display: ''}};
-    ins._showBtn = () => {};
+    const selectedTabInfo = { index: 4 };
+    ins._options.containerElement = { style: { display: '' } };
+    ins._showBtn = () => { };
     const result = ins._hideTabs(3, selectedTabInfo, true);
     expect(ins._tabs[0].style.display === 'none').toBe(false);
     expect(ins._tabs[1].style.display === 'none').toBe(false);
@@ -225,33 +225,33 @@ describe('hideTabs method : ', () => {
   });
   test('it should call _showBtn method', () => {
     ins._validateTabsCount();
-    const selectedTabInfo = {index: 4};
-    ins._options.containerElement = {style: {display: ''}};
-    ins._showBtn = jest.fn(() => {});
+    const selectedTabInfo = { index: 4 };
+    ins._options.containerElement = { style: { display: '' } };
+    ins._showBtn = jest.fn(() => { });
     ins._hideTabs(3, selectedTabInfo, true);
     expect(ins._showBtn.mock.calls.length).toBe(1);
   });
 });
 describe('validateTabsCount method : ', () => {
   test('it should set tabs and tabsCount properties', () => {
-    ins._tablistEl = {children: {length: 2}};
+    ins._tablistEl = { children: { length: 2 } };
     ins._validateTabsCount();
     expect(ins._tabs).toEqual(ins._tablistEl.children);
     expect(ins._tabsCount).toEqual(ins._tablistEl.children.length);
   });
   test('it should returns true if tabsCount is greater than zero', () => {
-    ins._tablistEl = {children: {length: 2}};
+    ins._tablistEl = { children: { length: 2 } };
     expect(ins._validateTabsCount()).toBe(true);
-    ins._tablistEl = {children: {length: 0}};
+    ins._tablistEl = { children: { length: 0 } };
     expect(ins._validateTabsCount()).toBe(false);
   });
 });
 describe('showAll method : ', () => {
   test('it should set display of all tabs into tabDisplay option', () => {
     ins._validateTabsCount();
-    ins._options.containerElement = {style: {display: ''}};
+    ins._options.containerElement = { style: { display: '' } };
     ins._options.tabDisplay = 'flex';
-    ins._hideBtn = () => {};
+    ins._hideBtn = () => { };
     ins._showAll();
     expect(ins._tabs[0].style.display === 'flex').toBe(true);
     expect(ins._tabs[1].style.display === 'flex').toBe(true);
@@ -263,9 +263,9 @@ describe('showAll method : ', () => {
   });
   test('it should call _hideBtn method', () => {
     ins._validateTabsCount();
-    ins._options.containerElement = {style: {display: ''}};
+    ins._options.containerElement = { style: { display: '' } };
     ins._options.tabDisplay = 'flex';
-    ins._hideBtn = jest.fn(() => {});
+    ins._hideBtn = jest.fn(() => { });
     ins._showAll();
     expect(ins._hideBtn.mock.calls.length).toBe(1);
   });
@@ -305,66 +305,78 @@ describe('findFirstHiddenTabIndexFactory mehtod : ', () => {
   test('findFirstHiddenTabIndexDSCE should loop through the tabs from the end and return the last tab index which its distance is negative', () => {
     ins._tablistEl = tablistElement;
     ins._validateTabsCount();
-    const selectedTabInfo = {index: 5, overflowFullSize: 6};
+    const selectedTabInfo = { index: 5, overflowFullSize: 6 };
     const tabsArray = [...ins._tabs];
     ins._getTabDis = (selectedTabInfo, tabEl) => {
       const tabIndex = tabsArray.indexOf(tabEl);
       if (selectedTabInfo.index == tabIndex || selectedTabInfo.overflowFullSize == tabIndex) {
-        return {value: -1};
+        return { value: -1 };
       }
-      return {value: 1};
+      return { value: 1 };
     };
     expect(ins._findFirstHiddenTabIndexDSCE(selectedTabInfo, 0, 6)).toBe(5);
   });
   test('_findFirstHiddenTabIndexASC should loop through the tabs and return the first tab index which its distance is negative', () => {
     ins._tablistEl = tablistElement;
     ins._validateTabsCount();
-    const selectedTabInfo = {index: 4, overflowFullSize: 3};
+    const selectedTabInfo = { index: 4, overflowFullSize: 3 };
     const tabsArray = [...ins._tabs];
     ins._getTabDis = (selectedTabInfo, tabEl) => {
       const tabIndex = tabsArray.indexOf(tabEl);
       if (selectedTabInfo.index == tabIndex || selectedTabInfo.overflowFullSize == tabIndex) {
-        return {value: -1};
+        return { value: -1 };
       }
-      return {value: 1};
+      return { value: 1 };
     };
     expect(ins._findFirstHiddenTabIndexASC(selectedTabInfo, 0, 6)).toBe(3);
   });
 });
 describe('getOrder method : ', () => {
-  test('it should return asc if : last tab child distance from end-edge of tablist container would greater then tablist container size', () => {
+  test('it should return asc if : first tab distance is more less than last tab distance', () => {
     ins._validateTabsCount();
     ins.els = {
-      getDistance: () => ({value: 100}),
-      getVisibleSize: () => ({value: 99}),
+      getDistance: (el) => {
+        if (el === ins._tabs[0]) {
+          return { value: 50 };
+        }
+        if (el === ins._tabs[ins._tabs.length - 1]) {
+          return { value: 100 };
+        }
+      },
     };
-    expect(ins._getOrder()).toBe('asc');
+    expect(ins._getOrder(ins._tabs[0], ins._tabs[ins._tabs.length - 1])).toBe('asc');
   });
-  it('it should return desc if : last tab child distance from end-edge of tablist container would equal or less then tablist container size', () => {
+  it('it should return desc if : last tab distance is more less than first tab distance', () => {
     ins._validateTabsCount();
     ins.els = {
-      getDistance: () => ({value: 100}),
-      getVisibleSize: () => ({value: 101}),
+      getDistance: (el) => {
+        if (el === ins._tabs[0]) {
+          return { value: 150 };
+        }
+        if (el === ins._tabs[ins._tabs.length - 1]) {
+          return { value: 100 };
+        }
+      },
     };
-    expect(ins._getOrder()).toBe('desc');
+    expect(ins._getOrder(ins._tabs[0], ins._tabs[ins._tabs.length - 1])).toBe('desc');
   });
 });
 describe('getSearchBoundries method : ', () => {
   test('it should return [0, tabsCount - 2] if there is not any tab selected', () => {
     ins._validateTabsCount();
-    const boundry = ins._getSearchBoundries({index: -1});
+    const boundry = ins._getSearchBoundries({ index: -1 });
     expect(boundry[0]).toBe(0); //start value
     expect(boundry[1]).toBe(ins._tabsCount - 2); //stop value
   });
   test('it should return [0, selectedTabIndex - 1]  if selected tab is overflow', () => {
     ins._validateTabsCount();
-    const boundry = ins._getSearchBoundries({index: 3, overflowFullSize: 1});
+    const boundry = ins._getSearchBoundries({ index: 3, overflowFullSize: 1 });
     expect(boundry[0]).toBe(0); //start value
     expect(boundry[1]).toBe(3 - 1); //stop value
   });
   test('it should return [selectedTabIndex + 1, tabsCount - 2]  if selected tab is not overflow', () => {
     ins._validateTabsCount();
-    const boundry = ins._getSearchBoundries({index: 3, overflowFullSize: 0});
+    const boundry = ins._getSearchBoundries({ index: 3, overflowFullSize: 0 });
     expect(boundry[0]).toBe(3 + 1); //start value
     expect(boundry[1]).toBe(ins._tabsCount - 2); //stop value
   });
@@ -373,7 +385,7 @@ describe('hideBtn method : ', () => {
   test(`it should not hide the button, because the button size is needed when all tabs are visible 
   but the button should not be visible`, () => {
     ins._options.buttonElement = {
-      style: {display: 'flex', position: 'relative', opacity: 1, pointerEvents: 'all'},
+      style: { display: 'flex', position: 'relative', opacity: 1, pointerEvents: 'all' },
     };
     ins._hideBtn();
     expect(ins._options.buttonElement.style.display).toBe('flex');
@@ -396,7 +408,7 @@ describe('showBtn method : ', () => {
 describe('_checkOverflow method : ', () => {
   test('_checkOverflow should check distance of last tab', () => {
     ins.els = {
-      getDistance: (lastTab) => ({value: lastTab}),
+      getDistance: (lastTab) => ({ value: lastTab }),
     };
     expect(ins._checkOverflow(1)).toBe(false);
     expect(ins._checkOverflow(-1)).toBe(true);
