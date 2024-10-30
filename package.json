@@ -2,11 +2,29 @@
   "name": "tabs-more-button",
   "version": "1.0.1",
   "private": false,
+  "description": "A lightweight library for making tabbed interfaces responsive by hiding overflow tabs while keeping the active tab visible.",
+  "keywords": [
+    "tabs",
+    "responsive",
+    "responsive tabs",
+    "more button",
+    "show more",
+    "view more",
+    "js",
+    "javascript",
+    "user-interface",
+    "web",
+    "overflow",
+    "active tab",
+    "tab management",
+    "horizontal tabs",
+    "vertical tabs",
+    "RTL"
+  ],
   "author": {
     "name": "dev-javascript",
     "email": "javascript.code.dev@gmail.com"
   },
-  "description": "Responsive Tabs with more button",
   "main": "lib/cjs/api.js",
   "module": "lib/esm/api.js",
   "repository": {
@@ -66,15 +84,6 @@
     "src",
     "index.d.ts",
     "__tests__"
-  ],
-  "keywords": [
-    "tabs",
-    "responsive",
-    "more-button",
-    "show-more",
-    "view-more",
-    "js",
-    "javascript"
   ],
   "license": "MIT",
   "directories": {

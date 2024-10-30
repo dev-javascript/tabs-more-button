@@ -2,11 +2,11 @@
 
 [![Test coverage](https://codecov.io/gh/dev-javascript/tabs-more-button/graph/badge.svg?token=GT1LU074L2)](https://codecov.io/gh/dev-javascript/tabs-more-button) [![NPM version](http://img.shields.io/npm/v/tabs-more-button.svg?style=flat-square)](http://npmjs.org/package/tabs-more-button) [![License](http://img.shields.io/npm/l/tabs-more-button.svg?style=flat-square)](LICENSE) [![npm download](https://img.shields.io/npm/dm/tabs-more-button.svg?style=flat-square)](https://npmjs.org/package/tabs-more-button) [![Build Status](https://travis-ci.org/ly-components/tabs-more-button.png)](https://travis-ci.org/ly-components/tabs-more-button)
 
-Responsive Tabs with more button
-
-Making tabs responsive by hiding overflow tabs except active tab
+`tabs-more-button` is a lightweight library designed to enhance your tabbed interfaces by making them responsive.​ This package does not create or manage tabs, but it intelligently hides overflow tabs while ensuring that the active tab remains visible. Ideal for scenarios where space is limited
 
 ## Features
+
+- Responsive
 
 - `Vertical` support
 
@@ -70,7 +70,7 @@ document.getElementById('view-more-button').addEventListener('click', () => cons
 
 ## Rules
 
-- `view more` button should be sibling element of `Tablist` element
+- `view more` button is required to display the hidden tabs and should be next sibling element of `Tablist` element
 
 - `tabs` and `view more` button should be kept on same line
 
@@ -81,12 +81,12 @@ document.getElementById('view-more-button').addEventListener('click', () => cons
 - buttonElement
 
   - type : `HtmlELement`
-  - description : `view more` button (should be sibling element of `Tablist` element)
+  - description : `view more` button
 
 - containerElement
 
   - type : `HtmlELement`
-  - description : the first ancestor of `view more` button which its `width|height` is not relative to `Tablist` element but is relative to `viewport`
+  - description : parent element of `view more` button and `Tablist` element
 
 - tablistElement
 
@@ -101,7 +101,7 @@ document.getElementById('view-more-button').addEventListener('click', () => cons
 
 - containerDisplay?
 
-  - type : `string`
+  - type : `"flex"`|`"block"`
   - description : `display` value for `containerElement`
   - default value : `flex`
 
