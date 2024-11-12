@@ -1,4 +1,4 @@
-export default function El({ el, sizeDimension, sizeDirections }) {
+export default function El({el, sizeDimension, sizeDirections}) {
   this._el = el;
   /**would be width|height */
   this._sizeDimension = sizeDimension;
@@ -14,7 +14,7 @@ El.prototype = {
   },
   /**
    * including padding, border and margin
-   * @param {"Right"|"Bottom"|"Left"|"Top"} dir 
+   * @param {"Right"|"Bottom"|"Left"|"Top"} dir
    * @returns {Number}
    */
   getSpacing: function (dir) {

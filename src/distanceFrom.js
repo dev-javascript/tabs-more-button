@@ -1,5 +1,5 @@
-export const constructor = function DistanceFrom(deps, { baseEl, isVertical, dir }) {
-  deps.Base.call(this, { isVertical });
+export const constructor = function DistanceFrom(deps, {baseEl, isVertical, dir}) {
+  deps.Base.call(this, {isVertical});
   this.baseEl = baseEl;
   this._distanceFactory(isVertical, dir);
 };

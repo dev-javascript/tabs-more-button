@@ -7,11 +7,11 @@
  * @param {String} [options.tabDisplay="inline-flex"] - default value is "inline-flex". would be display of tab elements
  * @param {String} [options.containerDisplay="flex"] - default value is "flex". would be display of container element
  */
-export const Api = function (options) {
+export const Api = function () {
   const arg = arguments;
   this._setOptions(arg[1]);
   this._tablistEl = null;
-  const { getElManagementIns } = arg[0]();
+  const {getElManagementIns} = arg[0]();
   this._getElManagementIns = getElManagementIns;
   this._tabs = null;
   this._tabsCount = null;
@@ -63,11 +63,11 @@ Api.prototype = {
   _hideTabs: function (firstHiddenTabIndex, selectedTabInfo, includeSelectedTab) {
     const hiddenTabs = [];
     this._options.containerElement.style.display = 'none';
-    const { index: selectedTabIndex } = selectedTabInfo;
+    const {index: selectedTabIndex} = selectedTabInfo;
     for (let i = firstHiddenTabIndex, tabsCount = this._tabsCount; i < tabsCount; i++) {
       if (includeSelectedTab || i !== selectedTabIndex) {
         this._tabs[i].style.display = 'none';
-        hiddenTabs.push({ el: this._tabs[i], index: i });
+        hiddenTabs.push({el: this._tabs[i], index: i});
       }
     }
     this._showBtn();
@@ -79,12 +79,12 @@ Api.prototype = {
     const el = index >= 0 ? tabs[index] : null;
     const overflow = el
       ? this.els
-        .getDistance(el)
-        .sub(this.els.getEl(this._options.tablistElement).getSpacing(this._btnPositionRelativeToTablist))
-        .sub(this.els.getEl(this._options.buttonElement).getFullSize()).value <= 0
+          .getDistance(el)
+          .sub(this.els.getEl(this._options.tablistElement).getSpacing(this._btnPositionRelativeToTablist))
+          .sub(this.els.getEl(this._options.buttonElement).getFullSize()).value <= 0
       : false;
     const overflowFullSize = overflow ? this.els.getEl(el).getFullSize() : 0;
-    return { index, overflowFullSize };
+    return {index, overflowFullSize};
   },
   _validateTabsCount: function () {
     this._tabs = this._tablistEl.children;
@@ -112,16 +112,19 @@ Api.prototype = {
     if (this._checkOverflow(_lastTab) === false) {
       return [];
     }
-    const selectedTabInfo = this._setBtnPositionRelativeToTablist(isVertical, direction)._getSelectedTabInfo(this._tabs, selectedTabIndex);
+    const selectedTabInfo = this._setBtnPositionRelativeToTablist(isVertical, direction)._getSelectedTabInfo(
+      this._tabs,
+      selectedTabIndex,
+    );
     return this._validateSliderMinSize(selectedTabInfo)
       ? this._hideTabs(
-        this._findFirstHiddenTabIndexFactory(
+          this._findFirstHiddenTabIndexFactory(
+            selectedTabInfo,
+            this._getSearchBoundries(selectedTabInfo),
+            this._getOrder(this._tabs[0], _lastTab),
+          ),
           selectedTabInfo,
-          this._getSearchBoundries(selectedTabInfo),
-          this._getOrder(this._tabs[0], _lastTab),
-        ),
-        selectedTabInfo,
-      )
+        )
       : this._hideTabs(0, selectedTabInfo, true);
   },
   _validateSliderMinSize: function (selectedTabInfo) {
@@ -139,7 +142,7 @@ Api.prototype = {
       : 'desc';
   },
   _getSearchBoundries: function (selectedTabInfo) {
-    const { overflowFullSize, index: pivotIndex } = selectedTabInfo;
+    const {overflowFullSize, index: pivotIndex} = selectedTabInfo;
     //if selected tab is not existed
     if (pivotIndex < 0) {
       return [0, this._tabsCount - 2];
@@ -181,7 +184,8 @@ Api.prototype = {
   /** set _btnPositionRelativeToTablist and _btnReversePositionRelativeToTablist */
   _setBtnPositionRelativeToTablist: function (isVertical, dir) {
     if (!this._btnPositionRelativeToTablist) {
-      let pos = '', reversePos = '';
+      let pos = '',
+        reversePos = '';
       if (isVertical == true) {
         pos = 'Bottom'; //the Button is rendered below the Tablist
         reversePos = 'Top';

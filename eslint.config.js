@@ -1,4 +1,5 @@
 const prettier = require('eslint-plugin-prettier');
+const trunOffPrettier = require('eslint-config-prettier');
 const globals = require('globals');
 const babelParser = require('@babel/eslint-parser');
 const path = require('path');
@@ -20,10 +21,11 @@ const GLOBALS_BROWSER_FIX = Object.assign({}, globals.browser, {
 delete GLOBALS_BROWSER_FIX['AudioWorkletGlobalScope '];
 
 module.exports = [
-  ...compat.extends('eslint:recommended', 'plugin:prettier/recommended'),
+  ...compat.extends('eslint:recommended', 'plugin:prettier/recommended', 'prettier'),
   {
     plugins: {
       prettier,
+      trunOffPrettier,
     },
 
     languageOptions: {
@@ -35,8 +37,7 @@ module.exports = [
 
       parser: babelParser,
       ecmaVersion: 12,
-      sourceType: 'commonjs',
-
+      sourceType: 'module',
       parserOptions: {
         ecmaFeatures: {
           //jsx: true,
