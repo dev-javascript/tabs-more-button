@@ -1,6 +1,6 @@
 {
   "name": "tabs-more-button",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "private": false,
   "description": "A lightweight library for making tabbed interfaces responsive by hiding overflow tabs while keeping the active tab visible.",
   "keywords": [
@@ -83,7 +83,8 @@
     "lib",
     "src",
     "index.d.ts",
-    "__tests__"
+    "__tests__",
+    "CHANGELOG.md"
   ],
   "license": "MIT",
   "directories": {
